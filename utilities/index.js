@@ -19,19 +19,19 @@ Util.getNav = async function (req, res, next) {
       ' vehicles">' +
       row.classification_name +
       "</a>"
-    list += "</li>"
-  })
-  list += "</ul>"
-  return list
-}
-
-
-/* **************************************
-* Build the classification view HTML
-* ************************************ */
-Util.buildClassificationGrid = async function(data){
-  let grid
-  if(data.length > 0){
+      list += "</li>"
+    })
+    list += "</ul>"
+    return list
+  }
+  
+  
+  /* **************************************
+  * Build the classification view HTML
+  * ************************************ */
+ Util.buildClassificationGrid = async function(data){
+   let grid
+   if(data.length > 0){
     grid = '<ul id="inv-display">'
     data.forEach(vehicle => { 
       grid += '<li>'
@@ -58,7 +58,6 @@ Util.buildClassificationGrid = async function(data){
   }
   return grid
 }
-
 
 
 module.exports = Util

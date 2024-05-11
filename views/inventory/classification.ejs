@@ -1,15 +1,15 @@
 
-// heading section
 
+<%# content heading %>
 <% if (title) { %>
-    <h1><%= title %></h1>
-    <% } else {
-      res.redirect('/')
-    } %>
+  <h1><%= title %></h1>
+  <% } else {
+    res.redirect('/')
+  } %>
 
 
-// <%# messages() %> 
+<%# messages() %> 
 
-// inventory item display 
 
+<%# inventory item display %>
 <%- grid %>
