@@ -60,4 +60,42 @@ Util.getNav = async function (req, res, next) {
 }
 
 
+
+  /* **************************************
+  * Build the Inventory view HTML
+  * ************************************ */
+ Util.buildInventoryGrid = async function(data){
+   let grid
+   if(data != 0){
+    grid = '<ul id="ind-display">'
+    data.forEach(detail => { 
+      grid += '<li>'
+      grid +=  '<a href="../../inv/detail/'+ detail.inv_id 
+      + '" title="View '+ detail.inv_year +' ' + detail.inv_make + ' '+ detail.inv_model 
+      + 'details"><img src="' + detail.inv_image 
+      +'" alt="Image of '+ detail.inv_make + ' ' + detail.inv_model 
+      +' on CSE Motors" /></a>'
+      grid += '<div class="namePrice">'
+      grid += '<hr />'
+      grid += '<h2>'
+      grid += '<a href="../../inv/detail/' + detail.inv_id +'" title="View ' 
+      + detail.inv_make + ' ' + detail.inv_model + ' details">' 
+      + detail.inv_make + ' ' + detail.inv_model + '</a>'
+      grid += '</h2>'
+      grid += '<span>$' 
+      + new Intl.NumberFormat('en-US').format(detail.inv_price) + '</span>'
+      grid += '<h2> Discription:'+ inv_description+' </h2>'
+      grid += '<h2> Color:'+ inv_color+' </h2>'
+      grid += '<h2> Miles: '+ inv_miles+' </h2>'
+      grid += '</div>'
+      grid += '</li>'
+    })
+    grid += '</ul>'
+  } else { 
+    grid += '<p class="notice">Sorry, no matching vehicles could be found.</p>'
+  }
+  return grid
+}
+
+
 module.exports = Util
