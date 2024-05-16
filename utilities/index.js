@@ -41,7 +41,6 @@ Util.getNav = async function (req, res, next) {
       +'" alt="Image of '+ vehicle.inv_make + ' ' + vehicle.inv_model 
       +' on CSE Motors" /></a>'
       grid += '<div class="namePrice">'
-      grid += '<hr />'
       grid += '<h2>'
       grid += '<a href="../../inv/detail/' + vehicle.inv_id +'" title="View ' 
       + vehicle.inv_make + ' ' + vehicle.inv_model + ' details">' 
@@ -68,15 +67,14 @@ Util.getNav = async function (req, res, next) {
    let grid
    if(data != 0){
     grid = '<ul id="ind-display">'
-    data.forEach(detail => { 
-      grid += '<li>'
+    data.forEach((detail) => { 
+      grid += '<li id="details"> '
       grid +=  '<a href="../../inv/detail/'+ detail.inv_id 
       + '" title="View '+ detail.inv_year +' ' + detail.inv_make + ' '+ detail.inv_model 
-      + 'details"><img src="' + detail.inv_image 
+      + 'details"><img class="detailImg" src="' + detail.inv_image 
       +'" alt="Image of '+ detail.inv_make + ' ' + detail.inv_model 
       +' on CSE Motors" /></a>'
       grid += '<div class="namePrice">'
-      grid += '<hr />'
       grid += '<h2>'
       grid += '<a href="../../inv/detail/' + detail.inv_id +'" title="View ' 
       + detail.inv_make + ' ' + detail.inv_model + ' details">' 
@@ -84,9 +82,9 @@ Util.getNav = async function (req, res, next) {
       grid += '</h2>'
       grid += '<span>$' 
       + new Intl.NumberFormat('en-US').format(detail.inv_price) + '</span>'
-      grid += '<h2> Discription:'+ inv_description+' </h2>'
-      grid += '<h2> Color:'+ inv_color+' </h2>'
-      grid += '<h2> Miles: '+ inv_miles+' </h2>'
+      grid += '<h3> Discription: '+ detail.inv_description+' </h3>'
+      grid += '<h3> Color: '+ detail.inv_color+' </h3>'
+      grid += '<h3> Miles: '+ detail.inv_miles+' </h3>'
       grid += '</div>'
       grid += '</li>'
     })
@@ -96,6 +94,7 @@ Util.getNav = async function (req, res, next) {
   }
   return grid
 }
+
 
 
 module.exports = Util
