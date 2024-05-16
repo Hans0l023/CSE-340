@@ -82,7 +82,7 @@ Util.getNav = async function (req, res, next) {
       grid += '</h2>'
       grid += '<span>$' 
       + new Intl.NumberFormat('en-US').format(detail.inv_price) + '</span>'
-      grid += '<h3> Discription: '+ detail.inv_description+' </h3>'
+      grid += '<h3> '+ detail.inv_description+' </h3>'
       grid += '<h3> Color: '+ detail.inv_color+' </h3>'
       grid += '<h3> Miles: '+ detail.inv_miles+' </h3>'
       grid += '</div>'

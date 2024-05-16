@@ -265,8 +265,9 @@ body{
         
     #details{
         display: grid;
-        grid-template-columns: 1fr 1fr;
-    }
+        grid-template-columns: 60em 40em;
+        margin: auto;   
+     }
 
     .detailImg{
         max-width: 90%;
