@@ -1,0 +1,54 @@
+
+
+
+<div id="register">
+    <h1><%= title %></h1>
+    
+    <% if (typeof flash !== 'undefined' && flash.length > 0) { %>
+        <div class="flash-message">
+            <%= flash %>
+        </div>
+    <% } %>
+
+    <% if (errors) { %>
+        <ul class="notice">
+       <% errors.array().forEach(error => { %>
+         <li><%= error.msg %></li>
+      <%  }) %>
+       </ul>
+      <% } %>
+
+    <form action="/account/register" method="post">
+        <div class="form-group">
+            <label for="first-name">First Name:</label>
+            <input type="text" id="first-name" name="first_name" required>
+        </div>
+        <div class="form-group">
+            <label for="last-name">Last Name:</label>
+            <input type="text" id="last-name" name="last_name" required>
+        </div>
+        <div class="form-group">
+            <label for="email">Email:</label>
+            <input type="email" id="email" name="email" required>
+        </div>
+        <div class="form-group">
+            <label for="password">Password:</label>
+            <p class="pass_require">12 characters in length, minimum</p>
+            <p class="pass_require">contain at least 1 capital letter</p>
+            <p class="pass_require">contain at least 1 number</p>
+            <p class="pass_require">contain at least 1 special character</p>
+            <input type="password" id="password" name="password" required pattern="^(?=.*\d)(?=.*[a-z])(?=.*[A-Z])(?=.*[^a-zA-Z0-9])(?!.*\s).{12,}$">
+            <button  type="button" id="togglePassword">Show/Hide Password</button>
+        </div>
+        <button id="register_button" type="submit">Register</button>
+    </form>
+</div>
+
+<script>
+    document.getElementById('togglePassword').addEventListener('click', function (e) {
+        const password = document.getElementById('password');
+        const type = password.getAttribute('type') === 'password' ? 'text' : 'password';
+        password.setAttribute('type', type);
+        this.textContent = type === 'password' ? 'Show Password' : 'Hide Password';
+    });
+</script>
