@@ -21,15 +21,15 @@
     <form action="/account/register" method="post">
         <div class="form-group">
             <label for="first-name">First Name:</label>
-            <input type="text" id="first-name" name="first_name" required>
+            <input type="text" id="first-name" name="first_name" required value="<%= locals.first_name %>">
         </div>
         <div class="form-group">
             <label for="last-name">Last Name:</label>
-            <input type="text" id="last-name" name="last_name" required>
+            <input type="text" id="last-name" name="last_name" required value="<%= locals.last_name %>">
         </div>
         <div class="form-group">
             <label for="email">Email:</label>
-            <input type="email" id="email" name="email" required>
+            <input type="email" id="email" name="email" required value="<%= locals.email %>">
         </div>
         <div class="form-group">
             <label for="password">Password:</label>
