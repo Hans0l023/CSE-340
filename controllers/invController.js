@@ -36,5 +36,46 @@ invCont.buildByInventoryId = async function (req, res, next) {
 }
 
 
+/* ***************************
+ *  Build inventory by management
+ * ************************** */
+invCont.buildManagement = async function (req, res, next) {
+  let nav = await utilities.getNav()
+  res.render('inventory/management', {
+  title: 'Management',
+  nav,
+
+
+  })
+}
+
+/* ***************************
+ *  Build inventory by add classification
+ * ************************** */
+invCont.buildAddClassification = async function (req, res, next) {
+  let nav = await utilities.getNav()
+  res.render('inventory/add-classification', {
+  title: 'Add classification',
+  nav,
+
+
+  })
+}
+/* ***************************
+ *  Build inventory by add Inventory
+ * ************************** */
+invCont.buildAddInventory = async function (req, res, next) {
+  let nav = await utilities.getNav()
+  res.render('inventory/add_inventory', {
+  title: 'Add Inventory',
+  nav,
+
+
+  })
+}
+
+
+
+
 
 module.exports = invCont
