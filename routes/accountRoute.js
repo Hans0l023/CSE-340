@@ -11,6 +11,8 @@ router.get("/login", accountController.buildLogin);
 // route to build register
 router.get("/register", accountController.buildRegister);
 
+router.get("/", (accountController.buildAccount))
+
 // Process the registration data
 router.post(
     "/register",
