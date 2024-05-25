@@ -48,6 +48,40 @@ invCont.buildManagement = async function (req, res, next) {
 
   })
 }
+/* ***************************
+*  Build account management
+* ************************** */
+invCont.buildAccountManagement = async function (req, res, next) {
+  let nav = await utilities.getNav()
+  res.render('inventory/account-management', {
+  title: 'Account Management',
+  nav,
+  error: null
+
+
+  })
+}
+
+invCont.logout = (req, res) => {
+  res.clearCookie('token');
+  res.redirect('/');
+}
+
+
+
+/* ***************************
+ *  Build update account
+ * ************************** */
+invCont.buildUpdateAccount = async function (req, res, next) {
+  let nav = await utilities.getNav()
+  res.render('inventory/update-account', {
+  title: 'Update Account',
+  nav,
+  errors: null
+
+
+  })
+}
 
 /* ***************************
  *  Build inventory by add classification
@@ -57,6 +91,7 @@ invCont.buildAddClassification = async function (req, res, next) {
   res.render('inventory/add-classification', {
   title: 'Add classification',
   nav,
+  errors: null
 
 
   })
@@ -69,6 +104,7 @@ invCont.buildAddInventory = async function (req, res, next) {
   res.render('inventory/add_inventory', {
   title: 'Add Inventory',
   nav,
+  errors: null
 
 
   })
@@ -172,6 +208,31 @@ invCont.updateInventory = async function (req, res, next) {
     })
   }
 }
+
+
+
+
+
+/* ***************************
+ *  Build delete confirmationw
+ * ************************** */
+invCont.getDeleteConfirmationView  = async function (req, res, next) {
+  const inv_id = parseInt(req.params.inv_id, 10);
+  try {
+      const inventory = await inventoryModel.getInventoryId(inv_id);
+      const nav =  await utilities.getNav()
+      res.render('inventory/delete-confirm', {
+          title: 'Delete Confirmation',
+          nav,
+          inventory,
+          errors: null
+      });
+  } catch (error) {
+      console.error('Error fetching inventory for delete confirmation:', error);
+      res.status(500).send('Server Error');
+  }
+}
+
 
 
 

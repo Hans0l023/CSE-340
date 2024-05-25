@@ -1,0 +1,14 @@
+
+    <h1>Account Management</h1>
+
+<div>
+    <h2>Welcome <%= user.firstName %></h2>
+
+    <a href="/accounts/update/<%= user.id %>">Update Account Information</a>
+    <% if (user.accountType === 'Client') { %>
+        <h2>Welcome <%= user.firstName %></h2>
+    <% else if (user.accountType === 'Employee' || user.accountType === 'Admin')  %>
+        <h3>Inventory Management</h3>
+        <p><a href="/inventory/management">Management Page</a></p>
+    <% } %>
+</div>

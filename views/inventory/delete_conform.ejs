@@ -1,0 +1,15 @@
+
+
+
+
+<h1>Confirm Deletion - The delete is permanent.</h1>
+<form action="/inv/delete" method="post">
+    <input type="hidden" name="inv_id" value="<%= inventory.inv_id %>">
+    
+    <p>Make: <%= inventory.make %></p>
+    <p>Model: <%= inventory.model %></p>
+    <p>Year: <%= inventory.year %></p>
+    <p>Price: <%= inventory.price %></p>
+    
+    <input type="submit" value="Delete">
+</form>

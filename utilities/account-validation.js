@@ -77,4 +77,27 @@ validate.checkRegData = async (req, res, next) => {
     next()
   }
   
+
+  validate.loginCheck = (req, res, next) => {
+    const password = req.header('Authorization')?.replace('Bearer ', '');
+  
+    if (!password) {
+        return res.status(401).render('login', { message: 'Please log in to access this page.' });
+    }
+  
+    try {
+        const decoded = jwt.verify(password, secretKey);
+        if (decoded.accountType === 'Employee' || decoded.accountType === 'Admin') {
+            req.user = decoded; // Attach user info to the request object
+            next();
+        } else {
+            return res.status(403).render('login', { message: 'Access denied. Insufficient permissions.' });
+        }
+    } catch (error) {
+        return res.status(401).render('login', { message: 'Invalid or expired password. Please log in again.' });
+    }
+  }
+  
+  
+  
   module.exports = validate

@@ -21,17 +21,19 @@
     <p>Select a classification from the list to see the items belonging to the classification.</p>
 
 
-    <select id="classificationList">
-        <% classification.forEach(function(classification) { %>
-        <option value="<%= classification.id %>"><%= classification.name %></option>
-        <% }); %>
-     </select>
-
+   
      
 
     <table id="inventoryDisplay"></table>
 
     <noscript>JavaScript must be enabled to use this page.</noscript>
+
+
+ <ul id="manage_link">
+            <a class="adding_link" href="/inv/edit">Edit Inventory</a> 
+            <hr>   
+            <a  class="adding_link" href="/inv/modify_inventory">Modify Inventory</a>  
+    </ul>
 
 
 
