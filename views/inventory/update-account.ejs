@@ -1,39 +1,31 @@
 
-    <h1>Update Account Information</h1>
 
 <div id="upaccount">
-    <% if (errors && errors.length > 0) { %>
-        <div class="errors">
-            <ul>
-                <% errors.forEach(function(error) { %>
-                    <li><%= error %></li>
-                <% }); %>
-            </ul>
-        </div>
-    <% } %>
+    <h1>Update Account Information</h1>
+   
 
-    <form action="/accounts/update/<%= user.id %>" method="post">
-        <h2>Account Update</h2>
+    <form action="/accounts/update/" method="post">
+        <h1>Account Update</h1>
         <label for="firstName">First Name:</label>
-        <input type="text" id="firstName" name="firstName" value="<%= user.firstName %>" required>
+        <input type="text" id="firstName" name="firstName"  required>
 
         <label for="lastName">Last Name:</label>
-        <input type="text" id="lastName" name="lastName" value="<%= user.lastName %>" required>
+        <input type="text" id="lastName" name="lastName"  required>
 
         <label for="email">Email:</label>
-        <input type="email" id="email" name="email" value="<%= user.email %>" required>
+        <input type="email" id="email" name="email"  required>
 
-        <input type="hidden" name="account_id" value="<%= user.id %>">
+        <input type="hidden" name="account_id" value="">
 
         <button type="submit">Update</button>
     </form>
 
-    <form action="/accounts/change-password/<%= user.id %>" method="post">
-        <h2>Change Password</h2>
+    <form action="/accounts/change-password/" method="post">
+        <h1>Change Password</h1>
         <label for="newPassword">New Password:</label>
         <input type="password" id="newPassword" name="newPassword" required>
 
-        <input type="hidden" name="account_id" value="<%= user.id %>">
+        <input type="hidden" name="account_id" value="">
 
         <button type="submit">Change Password</button>
     </form>

@@ -183,7 +183,7 @@ ul{
 }
 
 /* login page*/
-#login{
+#login, #upaccount{
     background-color: var(--primary-color);
     padding: 20px;
     border-radius: 10px;
